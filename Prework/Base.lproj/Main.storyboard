@@ -44,24 +44,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="faS-aq-grI" userLabel="Tip Control">
-                                <rect key="frame" x="20" y="190" width="374" height="32"/>
-                                <segments>
-                                    <segment title="15%"/>
-                                    <segment title="18%"/>
-                                    <segment title="20%"/>
-                                </segments>
-                                <connections>
-                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="OsS-0h-J6i"/>
-                                </connections>
-                            </segmentedControl>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQj-q1-TNx" userLabel="Bill Amount Text Field">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQj-q1-TNx" userLabel="Bill Amount Text Field">
                                 <rect key="frame" x="297" y="79" width="97" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="97" id="ehY-VT-hfE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epf-pn-ina" userLabel="Total Amount Label">
                                 <rect key="frame" x="349" y="255" width="45" height="21"/>
@@ -69,39 +58,50 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="YWU-Au-Xdl" userLabel="sliderTipAmount">
-                                <rect key="frame" x="26" y="308" width="363" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YWU-Au-Xdl" userLabel="sliderTipAmount">
+                                <rect key="frame" x="26" y="186" width="363" height="31"/>
+                                <connections>
+                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="2FL-Ni-Yf0"/>
+                                    <action selector="slider:" destination="BYZ-38-t0r" eventType="valueChanged" id="a67-iR-Pg2"/>
+                                </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bQ-u3-0F4" userLabel="labelSliderValue">
+                                <rect key="frame" x="117" y="217" width="181" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="YWU-Au-Xdl" secondAttribute="trailing" constant="7" id="973-SO-lDO"/>
+                            <constraint firstItem="YWU-Au-Xdl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="142" id="A3t-Lm-TVe"/>
                             <constraint firstItem="oQj-q1-TNx" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Ahx-Hc-OLr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YWU-Au-Xdl" secondAttribute="trailing" constant="7" id="BTI-1B-oMK"/>
                             <constraint firstItem="YWU-Au-Xdl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="DSd-2V-Ui9"/>
                             <constraint firstItem="h9Q-sI-ZEJ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="KqN-dQ-aqz"/>
-                            <constraint firstItem="faS-aq-grI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Lcu-LC-qb8"/>
-                            <constraint firstItem="YWU-Au-Xdl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="264" id="PhG-L0-2Xy"/>
                             <constraint firstItem="Odp-6w-kBp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Qp7-NX-tfu"/>
                             <constraint firstItem="Odp-6w-kBp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="RRf-4B-aoU"/>
                             <constraint firstItem="Epf-pn-ina" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Rxt-fS-93u"/>
+                            <constraint firstItem="5bQ-u3-0F4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="90" id="Tci-ua-1PS"/>
                             <constraint firstItem="Epf-pn-ina" firstAttribute="top" secondItem="h9Q-sI-ZEJ" secondAttribute="bottom" constant="95" id="UBm-pU-eol"/>
                             <constraint firstItem="x9f-ll-7LY" firstAttribute="leading" secondItem="wZG-Pw-QId" secondAttribute="leading" id="Vcl-Pd-Soi"/>
+                            <constraint firstItem="YWU-Au-Xdl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="YRp-lv-WEH"/>
                             <constraint firstItem="oQj-q1-TNx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="afu-aa-dJW"/>
                             <constraint firstItem="Odp-6w-kBp" firstAttribute="top" secondItem="wZG-Pw-QId" secondAttribute="bottom" constant="95" id="asZ-k4-vB5"/>
+                            <constraint firstItem="5bQ-u3-0F4" firstAttribute="top" secondItem="YWU-Au-Xdl" secondAttribute="bottom" constant="24" id="bXu-y2-Y1g"/>
                             <constraint firstItem="oQj-q1-TNx" firstAttribute="trailing" secondItem="h9Q-sI-ZEJ" secondAttribute="trailing" id="d7m-Iu-TuD"/>
-                            <constraint firstItem="faS-aq-grI" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="hEp-VC-BtW"/>
-                            <constraint firstItem="faS-aq-grI" firstAttribute="top" secondItem="wZG-Pw-QId" secondAttribute="bottom" constant="30" id="hoy-uZ-S8d"/>
                             <constraint firstItem="h9Q-sI-ZEJ" firstAttribute="top" secondItem="oQj-q1-TNx" secondAttribute="bottom" constant="25" id="j4s-VY-e5W"/>
                             <constraint firstItem="x9f-ll-7LY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="ka6-CB-zhI"/>
-                            <constraint firstItem="faS-aq-grI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="146" id="krj-uk-2yh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5bQ-u3-0F4" secondAttribute="trailing" constant="103" id="nyc-F4-hJn"/>
                             <constraint firstItem="x9f-ll-7LY" firstAttribute="centerY" secondItem="oQj-q1-TNx" secondAttribute="centerY" id="vXL-18-nDf"/>
                             <constraint firstItem="wZG-Pw-QId" firstAttribute="top" secondItem="x9f-ll-7LY" secondAttribute="bottom" constant="32" id="yci-WQ-voS"/>
                             <constraint firstItem="x9f-ll-7LY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zfx-qR-q6d"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="controlTipPercent" destination="faS-aq-grI" id="ZCH-XH-iPc"/>
+                        <outlet property="labelSliderValue" destination="5bQ-u3-0F4" id="of6-pc-wzo"/>
                         <outlet property="labelTipAmount" destination="h9Q-sI-ZEJ" id="ece-v3-dsC"/>
                         <outlet property="labelTotal" destination="Epf-pn-ina" id="uyr-w1-w7F"/>
                         <outlet property="txtBillAmount" destination="oQj-q1-TNx" id="V4Z-RK-3b5"/>
@@ -109,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="23" y="137"/>
+            <point key="canvasLocation" x="21.739130434782609" y="136.60714285714286"/>
         </scene>
     </scenes>
     <resources>
